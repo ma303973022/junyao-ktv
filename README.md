@@ -10,7 +10,7 @@
 
 - **手机扫码点歌**：无需安装 App，扫码即可搜索歌曲、点歌、管理已点队列
 - **大屏播放主页面**：支持三套视觉风格（简约卡片 / 暗夜霓虹 / 3D 轮播大屏），设置菜单三风格统一交互
-- **多端角色管理**：局域网内任意设备可申请「播放端」或「控制端」角色，播放端可上锁防误抢，控制端遥控播放端的暂停/切歌/音量/全屏等操作
+- **多端角色管理**：投影仪或者电视安装播放端，安卓平板安装控制端（非必须），浏览器的播放端可上锁防误抢，控制端遥控播放端的暂停/切歌/音量/全屏等操作
 - **原唱 / 伴唱切换**：基于双音轨 MV 服务端按需提取，浏览器端无需支持多音轨即可切换
 - **均衡器**：标准 / 人声增强 / 低音增强 / 明亮清晰等预设音效
 - **曲库管理**：支持本地目录与网盘挂载目录混合曲库，后台可视化管理来源、批量清理孤儿曲目、文件名智能解析、歌手头像自动匹配
@@ -42,7 +42,7 @@
 ```yaml
 services:
   junyao-ktv:
-    image: ma303973022/junyao-ktv:1.2.0
+    image: ma303973022/junyao-ktv:latest
     container_name: junyao-ktv
     restart: unless-stopped
     ports:
@@ -51,7 +51,7 @@ services:
       - TZ=Asia/Shanghai
       - PORT=8080
       - DATA_DIR=/data
-      - ADMIN_PASSWORD=admin888          # 管理后台("/admin")登录密码，建议改掉
+      - ADMIN_PASSWORD=admin888          # 管理后台("/admin")登录密码，记得改掉
       - VAAPI_DEVICE=/dev/dri/renderD128 # 核显硬件转码用，没有核显就删掉这行
       - HLS_CACHE_MAX_AGE_DAYS=3         # 转码缓存超过几天没人点就自动清理
       # 用 NVIDIA 显卡转码(NVENC)就取消下面两行注释，同时取消最下面 runtime: nvidia 的注释
