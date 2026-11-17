@@ -61,10 +61,11 @@ services:
       - /path/to/your/data:/data                 # 应用数据(数据库、封面等)，必须挂载
 
       # 曲库挂载：按需增删，本地曲库挂到 /mv/<自定义名>，网盘曲库挂到 /mv-net/<自定义名>
-      - /path/to/local/library1:/mv/library1
-      - /path/to/local/library2:/mv/library2
-      - /path/to/netdisk/library:/mv-net/netdisk1
+      - /path/to/local/library1:/mv/library1      #本地MV文件目录1
+      - /path/to/local/library2:/mv/library2      #本地MV文件目录2
+      - /path/to/netdisk/library:/mv-net/netdisk1 #网盘MV文件目录1
       - /path/to/singer/avatars:/singer           # 歌手头像目录，图片名对应歌手名，如 周杰伦.jpg
+      - /path/to/music:/music                     # 音乐目录，音乐文件和lrc歌词都放里面
       # 挂载完成后，还需要去后台「曲库管理→曲库来源」里把新目录逐个启用，才会真正参与扫描
     devices:
       - /dev/dri:/dev/dri     # 核显硬件转码用，没有核显就删掉这行
